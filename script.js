@@ -1,22 +1,22 @@
 const calc = document.getElementById("calculate");
 
 
-function imc(){
+function imc() {
     const name = document.getElementById("name").value;
     const height = document.getElementById("height").value;
     const weight = document.getElementById("weight").value;
     const painelResult = document.getElementById("result")
 
-    if(name === "" || height === "" || weight === ""){
+    if (name === "" || height === "" || weight === "") {
 
         painelResult.textContent = "Preencha Todos os campos!"
 
     } else {
-        
+
         let classify = "";
 
         // calculo do IMC
-        const valorIMC = (weight / height**2).toFixed(1);
+        const valorIMC = (weight / height ** 2).toFixed(1);
         // calculo do IMC     
 
         // condições da classicação 
@@ -36,12 +36,16 @@ function imc(){
         // condições da classificação
 
         // exibição do resultado no painel
-        if( valorIMC >= 25 && valorIMC <= 29.9) {
-            painelResult.innerHTML = `${name}, o seu IMC é ${valorIMC}. ${classify} <div style="color: #ffa31a;">Tome cuidado!!!</div> ` ;
-        } else if( valorIMC > 30) {
-            painelResult.innerHTML = `${name}, o seu IMC é ${valorIMC}. ${classify} <div style="color: #e60000;">Altos riscos a sua saúde!!!</div> `;
+        if (valorIMC < 18.5) {
+            painelResult.innerHTML = `${name}, o seu IMC é ${valorIMC}. ${classify} <div style="color: #e60000;">Riscos a sua saúde!!</div> `;
         } else {
-           painelResult.innerHTML = `${name}, o seu IMC é ${valorIMC}. ${classify}  `; 
+            if (valorIMC >= 25 && valorIMC <= 29.9) {
+                painelResult.innerHTML = `${name}, o seu IMC é ${valorIMC}. ${classify} <div style="color: #ffa31a;">Tome cuidado!!!</div> `;
+            } else if (valorIMC > 30) {
+                painelResult.innerHTML = `${name}, o seu IMC é ${valorIMC}. ${classify} <div style="color: #e60000;">Altos riscos a sua saúde!!!</div> `;
+            } else {
+                painelResult.innerHTML = `${name}, o seu IMC é ${valorIMC}. ${classify}  `;
+            }
         }
         // exibição do resultado no painel
     }
